@@ -1,5 +1,5 @@
 // Procedural watercolor wildflower ornaments → transparent PNGs.
-// Usage: node paint.mjs <outDir> [soft|wallpaper]
+// Usage: node tools/paint.mjs assets/ornaments [soft|wallpaper]
 import { chromium } from 'playwright';
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';

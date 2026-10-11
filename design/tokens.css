@@ -1,0 +1,100 @@
+/* Wildflower — design tokens
+   One source of truth for colour, type, spacing and radii.
+   Everything else in /design and /site reads from these variables. */
+
+:root {
+  /* ---- Paper & ink ---- */
+  --paper: #FFFCF6;          /* ivory page ground — all ornaments are cut for this */
+  --paper-2: #F7F1E6;        /* warmer band for alternating sections */
+  --paper-3: #EDE4CF;        /* deepest cream: cards on paper-2, table rules */
+  --ink: #3F3A33;            /* body text, line art */
+  --ink-soft: #5E5A4F;       /* secondary text, labels, nav */
+  --ink-mute: #857F72;       /* captions, placeholders — AA on paper at 14px+ */
+  --rule: #E3DACB;           /* hairlines, input borders */
+
+  /* ---- Accent (display type, buttons) ---- */
+  --accent: #4F5B38;         /* deep olive ink — the default heading colour */
+  --accent-hover: #36402A;
+  --accent-ink: #FFFCF6;     /* text on accent */
+
+  /* ---- Bloom palette: 'soft' (the brief) ---- */
+  --blush: #E8A5B4;
+  --blush-light: #F3CAD3;
+  --blush-deep: #D98A9C;
+  --coral: #D9694F;
+  --coral-light: #E8917A;
+  --coral-deep: #BF5640;
+  --butter: #F2C94C;
+  --butter-light: #F7DC8A;
+  --butter-deep: #E2AE36;
+  --sage: #7F9472;
+  --sage-light: #A3B396;
+  --olive: #6E8B3D;
+  --olive-deep: #556E2E;
+
+  /* ---- Wallpaper palette (the restaurant's wall) ---- */
+  --wp-ochre: #EBBE84;
+  --wp-raspberry: #C9506E;
+  --wp-raspberry-deep: #A63D5A;
+  --wp-marigold: #E68A3C;
+  --wp-plum: #8C76A8;
+  --wp-sky: #7FA6C9;
+  --wp-leaf: #3F5A3C;
+  --wp-teal: #4E6E62;
+
+  /* ---- Type ---- */
+  --font-script: 'Pinyon Script', 'Snell Roundhand', cursive;
+  --font-serif: 'Cormorant Garamond', 'Cormorant', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Jost', 'Futura', 'Avenir Next', system-ui, sans-serif;
+
+  --text-xs: 0.8125rem;      /* 13px  small caps labels, nav */
+  --text-sm: 0.9375rem;      /* 15px  form text */
+  --text-md: 1.25rem;        /* 20px  serif body */
+  --text-lg: 1.5rem;         /* 24px  lead / italic lines */
+  --text-xl: 2.125rem;       /* 34px  h3 */
+  --text-2xl: 2.625rem;      /* 42px  h2 italic section titles */
+  --text-3xl: 3.5rem;        /* 56px  h1 serif */
+  --text-script: clamp(3.5rem, 11vw, 6.5rem); /* the name */
+
+  --leading-tight: 1.1;
+  --leading-body: 1.6;
+  --tracking-caps: 0.24em;
+  --tracking-caps-wide: 0.3em;
+
+  /* ---- Space (4px base) ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* ---- Shape ---- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-pill: 999px;
+  --shadow-card: 0 1px 2px rgba(60, 50, 30, 0.08), 0 18px 48px rgba(60, 50, 30, 0.12);
+
+  /* ---- Layout ---- */
+  --measure: 34rem;          /* max line length for body copy */
+  --content: 60rem;          /* 960px content column */
+  --gutter: var(--space-6);
+
+  /* ---- Controls ---- */
+  --tap: 48px;               /* minimum interactive height */
+  --focus: 2px solid var(--accent);
+}
+
+/* Alternate ink colours. Set data-ink on <html> or any section. */
+[data-ink="charcoal"]  { --accent: #3F3A33; --accent-hover: #241F1A; }
+[data-ink="teal"]      { --accent: #3E5A57; --accent-hover: #2A403E; }
+[data-ink="raspberry"] { --accent: #8E3B52; --accent-hover: #6E2B3E; }
+
+/* Ornament colourway. Set data-palette="wallpaper" to use the warmer set. */
+:root { --ornament-suffix: ''; }
+[data-palette="wallpaper"] { --ornament-suffix: '-wallpaper'; }

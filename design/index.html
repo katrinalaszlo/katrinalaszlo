@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wildflower design system</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  .sg-section { padding-block: var(--space-12); border-top: 1px solid var(--rule); }
+  .sg-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--space-4); }
+  .swatch { border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--rule); font-family: var(--font-sans); font-size: 0.8125rem; }
+  .swatch__chip { height: 72px; }
+  .swatch__meta { padding: var(--space-2) var(--space-3); display: flex; justify-content: space-between; color: var(--ink-soft); }
+  .sg-row { display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; }
+  .sg-asset { display: flex; flex-direction: column; gap: var(--space-2); font-family: var(--font-sans); font-size: 0.8125rem; color: var(--ink-soft); }
+  .sg-asset img { border: 1px dashed var(--rule); }
+  code { font-family: ui-monospace, Menlo, monospace; font-size: 0.85em; background: var(--paper-2); padding: 0.1em 0.35em; border-radius: 4px; }
+  .sg-ink { display: flex; gap: var(--space-6); flex-wrap: wrap; }
+  .sg-ink > div { padding: var(--space-4); border: 1px solid var(--rule); border-radius: var(--radius-sm); }
+</style>
+</head>
+<body>
+<main class="wrap stack" style="--stack-gap: 0; padding-block: var(--space-16)">
+  <header class="stack stack--tight" style="padding-bottom: var(--space-12)">
+    <p class="t-caps">Design system</p>
+    <h1 class="t-display">Wildflower</h1>
+    <p class="t-lead measure">Hand-painted botanicals, ivory paper, olive ink. For a baby shower website in the Zola / Paperless Post idiom.</p>
+  </header>
+
+  <section class="sg-section stack">
+    <h2 class="t-heading">Colour</h2>
+    <p class="measure">Paper and ink carry the page. Blooms appear only in the artwork, never as text colour: none of the pinks or yellows pass contrast on ivory.</p>
+    <h3 class="t-caps">Paper &amp; ink</h3>
+    <div class="sg-grid">
+      <div class="swatch"><div class="swatch__chip" style="background: var(--paper)"></div><div class="swatch__meta"><span>paper</span><span>#FFFCF6</span></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background: var(--paper-2)"></div><div class="swatch__meta"><span>paper-2</span><span>#F7F1E6</span></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background: var(--paper-3)"></div><div class="swatch__meta"><span>paper-3</span><span>#EDE4CF</span></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background: var(--ink)"></div><div class="swatch__meta"><span>ink</span><span>#3F3A33</span></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background: var(--ink-soft)"></div><div class="swatch__meta"><span>ink-soft</span><span>#5E5A4F</span></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background: var(--accent)"></div><div class="swatch__meta"><span>accent</span><span>#4F5B38</span></div></div>
+    </div>
+    <h3 class="t-caps">Blooms — soft</h3>
+    <div class="sg-grid">
+      <div class="swatch"><div class="swatch__chip" style="background: var(--blush)"></div><div class="swatch__meta"><span>blush</span><span>#E8A5B4</span></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background: var(--coral)"></div><div class="swatch__meta"><span>coral</span><span>#D9694F</span></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background: var(--butter)"></div><div class="swatch__meta"><span>butter</span><span>#F2C94C</span></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background: var(--sage)"></div><div class="swatch__meta"><span>sage</span><span>#7F9472</span></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background: var(--olive)"></div><div class="swatch__meta"><span>olive</span><span>#6E8B3D</span></div></div>
+    </div>
+    <h3 class="t-caps">Blooms — wallpaper</h3>
+    <div class="sg-grid">
+      <div class="swatch"><div class="swatch__chip" style="background: var(--wp-ochre)"></div><div class="swatch__meta"><span>ochre</span><span>#EBBE84</span></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background: var(--wp-raspberry)"></div><div class="swatch__meta"><span>raspberry</span><span>#C9506E</span></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background: var(--wp-marigold)"></div><div class="swatch__meta"><span>marigold</span><span>#E68A3C</span></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background: var(--wp-plum)"></div><div class="swatch__meta"><span>plum</span><span>#8C76A8</span></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background: var(--wp-sky)"></div><div class="swatch__meta"><span>sky</span><span>#7FA6C9</span></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background: var(--wp-leaf)"></div><div class="swatch__meta"><span>leaf</span><span>#3F5A3C</span></div></div>
+    </div>
+    <h3 class="t-caps">Ink options <span class="t-mute" style="text-transform: none; letter-spacing: 0">— set <code>data-ink</code> on &lt;html&gt;</span></h3>
+    <div class="sg-ink">
+      <div><h2 class="t-title">Olive</h2><p class="t-caps">default</p></div>
+      <div data-ink="charcoal"><h2 class="t-title">Charcoal</h2><p class="t-caps">data-ink="charcoal"</p></div>
+      <div data-ink="teal"><h2 class="t-title">Teal</h2><p class="t-caps">data-ink="teal"</p></div>
+      <div data-ink="raspberry"><h2 class="t-title">Raspberry</h2><p class="t-caps">data-ink="raspberry"</p></div>
+    </div>
+  </section>
+
+  <section class="sg-section stack">
+    <h2 class="t-heading">Type</h2>
+    <p class="measure">Three voices. The script is for the name and signatures only, never a sentence or a button. The serif does all the reading. The sans does labels, dates and controls in tracked-out caps.</p>
+    <p class="t-script">Script — Pinyon</p>
+    <p class="t-display">Display — Cormorant Garamond 56</p>
+    <p class="t-title">Section title — italic 42</p>
+    <p class="t-heading">Heading — 34</p>
+    <p class="t-lead">Lead — italic 24</p>
+    <p class="t-body measure">Body — 20 / 1.6. Generous, old-style numerals, a warm grey rather than black. Lines are capped at about 34rem so a paragraph never runs wide on desktop.</p>
+    <p class="t-caps">Small caps label — Jost 13 / 0.24em</p>
+  </section>
+
+  <section class="sg-section stack">
+    <h2 class="t-heading">Ornaments</h2>
+    <p class="measure">Transparent PNGs cut for ivory. Use one motif per job and repeat it: the hero sprig once, the section sprig above every italic section title, the stem as a sign-off.</p>
+    <div class="sg-row" style="align-items: flex-end">
+      <div class="sg-asset"><img src="../assets/ornaments/hero-sprig.png" alt="" style="width: 480px"><span>hero-sprig · 1200×400 · <code>.ornament--hero</code></span></div>
+      <div class="sg-asset"><img src="../assets/ornaments/section-ornament.png" alt="" style="width: 240px"><span>section-ornament · 600×150 · <code>.ornament--section</code></span></div>
+      <div class="sg-asset"><img src="../assets/ornaments/single-stem.png" alt="" style="width: 64px"><span>single-stem · 160×400 · <code>.ornament--stem</code></span></div>
+    </div>
+    <div class="divider"><img class="ornament ornament--section" src="../assets/ornaments/section-ornament.png" alt=""></div>
+    <p class="t-caps">Divider — <code>.divider</code></p>
+  </section>
+
+  <section class="sg-section stack">
+    <h2 class="t-heading">Venue illustrations</h2>
+    <p class="measure">Ink line with loose watercolour washes, deliberately misregistered. Use them large and sparingly: the building on the Details card, the hollyhocks beside the note, the spots in callouts.</p>
+    <div class="sg-row" style="align-items: flex-start">
+      <div class="sg-asset"><img src="../assets/illustrations/building.png" alt="" style="width: 520px"><span>building · 1200×700</span></div>
+      <div class="sg-asset"><img src="../assets/illustrations/hollyhocks.png" alt="" style="width: 180px"><span>hollyhocks · 520×860</span></div>
+      <div class="sg-asset"><img src="../assets/illustrations/bud-vase.png" alt="" style="width: 120px"><span>bud-vase · 240×380</span></div>
+      <div class="sg-asset"><img src="../assets/illustrations/hummingbird.png" alt="" style="width: 160px"><span>hummingbird · 320×240</span></div>
+      <div class="sg-asset"><img src="../assets/illustrations/butterfly.png" alt="" style="width: 120px"><span>butterfly · 240×200</span></div>
+    </div>
+    <div class="sg-row" style="align-items: flex-start">
+      <div class="sg-asset"><div style="width: 300px; height: 300px; background: url('../assets/illustrations/wallpaper-tile-ochre.png') 0 0 / 300px"></div><span>wallpaper-tile-ochre · 600 seamless</span></div>
+      <div class="sg-asset"><div style="width: 300px; height: 300px; background: url('../assets/illustrations/wallpaper-tile-ivory.png') 0 0 / 300px"></div><span>wallpaper-tile-ivory · 600 seamless</span></div>
+    </div>
+  </section>
+
+  <section class="sg-section stack">
+    <h2 class="t-heading">Buttons</h2>
+    <div class="sg-row">
+      <a class="btn" href="#">Primary</a>
+      <a class="btn btn--ghost" href="#">Ghost</a>
+      <a class="btn btn--small" href="#">Small</a>
+      <button class="btn btn--link" type="button">Link button</button>
+    </div>
+  </section>
+
+  <section class="sg-section stack">
+    <h2 class="t-heading">Section heading</h2>
+    <div class="section-head">
+      <img class="ornament ornament--section" src="../assets/ornaments/section-ornament.png" alt="">
+      <h2 class="t-title">The Details</h2>
+      <p class="section-head__sub">An optional line underneath</p>
+    </div>
+  </section>
+
+  <section class="sg-section stack">
+    <h2 class="t-heading">Detail cards &amp; timeline</h2>
+    <div class="details">
+      <div class="detail"><h3 class="t-caps">When</h3><p class="detail__value">Saturday, May 9<br>1:00 – 4:00 pm</p><a class="detail__link" href="#">Add to calendar</a></div>
+      <div class="detail"><h3 class="t-caps">Where</h3><p class="detail__value">[Restaurant]<br>[Address]</p><a class="detail__link" href="#">Get directions</a></div>
+      <div class="detail"><h3 class="t-caps">Good to know</h3><p class="detail__value">Garden-party casual</p></div>
+    </div>
+    <ol class="timeline">
+      <li class="timeline__item"><span class="timeline__time">1:00 pm</span><span class="timeline__what">Arrive, drinks and nibbles</span></li>
+      <li class="timeline__item"><span class="timeline__time">1:45 pm</span><span class="timeline__what">Lunch</span></li>
+      <li class="timeline__item"><span class="timeline__time">3:30 pm</span><span class="timeline__what">Cake</span></li>
+    </ol>
+  </section>
+
+  <section class="sg-section stack">
+    <h2 class="t-heading">Callout</h2>
+    <div class="callout">
+      <img class="callout__art" src="../assets/illustrations/butterfly.png" alt="">
+      <div class="stack stack--tight"><h3 class="callout__title">A book instead of a card</h3><p>In place of a card, bring a children's book and write a note inside.</p></div>
+    </div>
+  </section>
+
+  <section class="sg-section stack">
+    <h2 class="t-heading">FAQ</h2>
+    <div class="faq">
+      <details class="faq__item"><summary class="faq__q">Can I bring my partner?</summary><div class="faq__a">Yes, everyone's welcome.</div></details>
+      <details class="faq__item"><summary class="faq__q">Where do I park?</summary><div class="faq__a">Street parking, or the lot behind the building.</div></details>
+    </div>
+  </section>
+
+  <section class="sg-section stack">
+    <h2 class="t-heading">Form</h2>
+    <form class="form" style="max-width: 36rem" onsubmit="return false">
+      <div class="field"><label class="field__label" for="d-name">Your name</label><input class="input" id="d-name" type="text"></div>
+      <fieldset class="field"><legend class="field__label">Will you attend?</legend>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="d-attend" checked><span class="choice__label">Joyfully accepts</span></label>
+          <label class="choice"><input type="radio" name="d-attend"><span class="choice__label">Regretfully declines</span></label>
+        </div>
+      </fieldset>
+      <div class="field"><label class="field__label" for="d-guests">Number in your party</label><select class="select" id="d-guests"><option>1</option><option>2</option></select></div>
+      <div class="field"><label class="field__label" for="d-note">A note</label><textarea class="textarea" id="d-note" rows="3"></textarea></div>
+      <div class="form__actions"><button class="btn" type="submit">Send reply</button><p class="form__fallback">Trouble replying? Text [Host].</p></div>
+    </form>
+    <div class="confirm" style="max-width: 36rem"><p class="confirm__title">Thank you</p><p class="t-lead">We can't wait to celebrate with you.</p><button class="btn btn--link" type="button">Change your reply</button></div>
+  </section>
+</main>
+</body>
+</html>
