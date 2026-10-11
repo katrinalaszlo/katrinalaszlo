@@ -68,10 +68,19 @@
 .cover__place { margin-top: var(--space-1); color: var(--ink-soft); }
 .cover__cta { margin-top: var(--space-10); }
 .cover__frame { position: relative; }
-/* optional faint wallpaper behind the cover only */
-.cover--papered { background-image: url('../assets/illustrations/wallpaper-tile-ivory.png'); background-size: 600px; }
-.cover--papered > * { position: relative; }
-.cover--papered::before { content: ''; position: absolute; inset: 0; background: color-mix(in srgb, var(--paper) 78%, transparent); }
+/* Papered cover: the drawn wallpaper tile washed back behind the type. Cover only. */
+.cover--papered {
+  position: relative; max-width: none; padding-inline: var(--gutter);
+  background-color: var(--paper);
+  background-image: linear-gradient(var(--paper-wash), var(--paper-wash)), url('../assets/illustrations/wallpaper-tile-ivory.png');
+  background-size: auto, 520px; background-position: center top;
+  --paper-wash: rgba(255, 252, 246, 0.72);
+}
+.cover--papered::after { content: ''; position: absolute; inset: auto 0 0 0; height: 120px; background: linear-gradient(transparent, var(--paper)); pointer-events: none; }
+.cover--papered > * { position: relative; z-index: 1; }
+.cover--papered .ornament--hero { display: none; }
+.cover--papered .cover__name { margin-top: var(--space-6); }
+@media (max-width: 600px) { .cover--papered { background-size: auto, 380px; } }
 
 /* ---------- Note from the hosts ---------- */
 .note { max-width: var(--measure); margin-inline: auto; text-align: center; }
