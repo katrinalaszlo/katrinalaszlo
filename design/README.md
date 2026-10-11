@@ -75,7 +75,7 @@ Each is shown in `design/index.html` with its markup.
 
 ## Page order (`site/index.html`)
 
-Cover → A note from the hosts → The Details (when / where / good to know, venue card, run-of-show) → Registry (+ book-instead-of-card callout) → Questions → Kindly Reply → Footer.
+Cover → A note from the hosts → The Details (when / where / good to know, venue card, run-of-show) → Registry (+ book-instead-of-card callout) → Kindly Reply → Footer.
 
 This is the wedding-site order with the wedding-only parts removed (wedding party, travel, multi-day schedule). Sections are independent; delete any `<section>` you don't need.
 
@@ -83,7 +83,7 @@ This is the wedding-site order with the wedding-only parts removed (wedding part
 
 The form asks: name, email (for a reminder), accept/decline, party size and dietary needs (only shown when accepting), and an optional note. Declining goes straight to the note; the decline wording is warm and never buried. A thank-you panel replaces the form on submit, with "Change your reply".
 
-**Collecting RSVPs.** The template's submit handler is a stub (`// TODO` in `site/index.html`). Point it at any of: a Google Form / Sheet via Apps Script, Formspree or Netlify Forms (zero backend), or a small Supabase table. Add the RSVP deadline to the cover button, the section subtitle and the FAQ so nobody misses it.
+**Collecting RSVPs.** The template's submit handler is a stub (`// TODO` in `site/index.html`). Point it at any of: a Google Form / Sheet via Apps Script, Formspree or Netlify Forms (zero backend), or a small Supabase table. Add the RSVP deadline to the cover button, and the section subtitle so nobody misses it.
 
 ## Content checklist
 
