@@ -26,7 +26,7 @@ All in `tokens.css` as CSS custom properties. Three switches:
 | Switch | Where | Values |
 |---|---|---|
 | Ink colour | `data-ink` on `<html>` or a section | `olive` (default) · `charcoal` · `teal` · `raspberry` |
-| Ornament colourway | swap the file name | `hero-sprig.png` ↔ `hero-sprig-wallpaper.png` |
+| Ornament style | swap the folder | `ornaments/` (ink & wash) ↔ `ornaments/watercolor/` (soft) |
 | Section banding | `.band` / `.band--alt` | alternate ivory and `paper-2` |
 
 ## Type
@@ -47,7 +47,7 @@ Google Fonts link (one line, in `<head>`):
 ## Artwork
 
 ### Ornaments (`assets/ornaments/`)
-Transparent PNGs at 1× and 2×, plus the source SVG. Two colourways: **soft** (the brief's palette) and **wallpaper** (`-wallpaper` suffix, matched to the restaurant's wall: raspberry, marigold, deeper olive).
+Transparent PNGs at 1× and 2×, plus the source SVG. Drawn in ink line with loose wash, the same hand as the building. The earlier pure-watercolour set lives in `ornaments/watercolor/` (soft and `-wallpaper` colourways).
 
 | File | Size | Class | Where |
 |---|---|---|---|

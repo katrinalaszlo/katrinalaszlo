@@ -21,6 +21,7 @@ const P = {
   plum: '#8C76A8', plumDk: '#6B5590',
   blue: '#7FA6C9', blueDk: '#4F7398', rock: '#A9B6BF', rockDk: '#8796A3',
   cream: '#EDE4CF', ochre: '#EBBE84', ivory: '#FFFCF6',
+  blushW: '#E8A5B4', coralW: '#E8917A',
 };
 
 // ---------- seeded random ----------
@@ -538,6 +539,132 @@ function hollyhocks() {
   return svgDoc(520, 860, out.join(''));
 }
 
+function poppyBud(x, y, r, ang) {
+  const d = `M0 0 C${f2(r * 0.2)} ${f2(-r * 0.75)} ${f2(r * 1.7)} ${f2(-r * 0.85)} ${f2(r * 2.1)} 0 C${f2(r * 1.7)} ${f2(r * 0.85)} ${f2(r * 0.2)} ${f2(r * 0.75)} 0 0Z`;
+  put(`<g transform="translate(${f2(x)} ${f2(y)}) rotate(${f2(ang)})"><path d="${d}" fill="${P.sage}" fill-opacity="0.9" filter="url(#wcLeaf)"/><path d="M${f2(r * 1.2)} ${f2(-r * 0.15)} C${f2(r * 1.5)} ${f2(-r * 0.55)} ${f2(r * 2)} ${f2(-r * 0.35)} ${f2(r * 2.05)} 0 C${f2(r * 1.8)} ${f2(r * 0.2)} ${f2(r * 1.4)} ${f2(r * 0.15)} ${f2(r * 1.2)} ${f2(-r * 0.15)}Z" fill="${P.coral}" fill-opacity="0.75" filter="url(#wcSmall)"/><path d="${d}" fill="none" stroke="${INK}" stroke-width="0.9" stroke-opacity="0.8" filter="url(#ink)"/><path d="M${f2(r * 0.3)} 0 C${f2(r * 0.8)} ${f2(r * 0.2)} ${f2(r * 1.4)} ${f2(r * 0.15)} ${f2(r * 1.9)} 0" stroke="${INK}" stroke-width="0.6" stroke-opacity="0.5" fill="none" filter="url(#ink)"/></g>`);
+}
+// ===================== INK ORNAMENTS =====================
+// Same hand as the building: ink line, wash slipping off the line.
+function inkCosmos(x, y, r, tilt = 0) {
+  const n = 8, cols = [P.pink, P.pinkLt, P.blushW];
+  const pet = [];
+  for (let i = 0; i < n; i++) {
+    const a = (360 / n) * i + tilt + rr(-7, 7), L = r * rr(0.88, 1.05), w = r * 0.42;
+    const d = `M0 0 C${f2(L * 0.3)} ${f2(-w * 0.5)} ${f2(L * 0.75)} ${f2(-w * 0.62)} ${f2(L * 0.96)} ${f2(-w * 0.45)} L${f2(L)} ${f2(-w * 0.1)} L${f2(L * 0.97)} ${f2(w * 0.3)} L${f2(L * 0.9)} ${f2(w * 0.5)} C${f2(L * 0.7)} ${f2(w * 0.6)} ${f2(L * 0.3)} ${f2(w * 0.5)} 0 0Z`;
+    pet.push([a, d]);
+  }
+  for (const [a, d] of pet) put(`<g transform="translate(${f2(x + rr(-2, 2))} ${f2(y + rr(-2, 2))}) rotate(${f2(a)})"><path d="${d}" fill="${pick(cols)}" fill-opacity="0.8" filter="url(#wcPetal)"/></g>`);
+  for (const [a, d] of pet) put(`<g transform="translate(${f2(x)} ${f2(y)}) rotate(${f2(a)})"><path d="${d}" fill="none" stroke="${INK}" stroke-width="0.9" stroke-opacity="0.8" stroke-dasharray="${f2(rr(30, 60))} ${f2(rr(2, 5))}" filter="url(#ink)"/><path d="M${f2(r * 0.2)} 0 L${f2(r * 0.7)} ${f2(-r * 0.04)} M${f2(r * 0.25)} ${f2(r * 0.06)} L${f2(r * 0.6)} ${f2(r * 0.1)}" stroke="${INK}" stroke-width="0.5" stroke-opacity="0.4" filter="url(#ink)"/></g>`);
+  wash(blob(x, y, r * 0.2, r * 0.2, 7, 0.15), P.butter, 0.95, 'wcSmall', 0.5);
+  for (let i = 0; i < 10; i++) put(`<circle cx="${f2(x + rr(-r, r) * 0.17)}" cy="${f2(y + rr(-r, r) * 0.17)}" r="0.9" fill="${INK}" fill-opacity="0.7"/>`);
+}
+function inkPoppy(x, y, r, tilt = 0) {
+  const pet = [];
+  for (let i = 0; i < 4; i++) {
+    const a = i * 90 + tilt + rr(-12, 12), L = r * rr(0.85, 1), w = L * 1.1, k = rr(-0.1, 0.1);
+    pet.push([a, `M0 0 C${f2(L * 0.1)} ${f2(-w * 0.55)} ${f2(L * 0.8)} ${f2(-w * (0.7 + k))} ${f2(L * 0.98)} ${f2(-w * 0.12)} C${f2(L * 1.02)} ${f2(w * 0.1)} ${f2(L * 0.9)} ${f2(w * 0.25)} ${f2(L * 0.95)} ${f2(w * 0.3)} C${f2(L * 0.75)} ${f2(w * (0.7 - k))} ${f2(L * 0.1)} ${f2(w * 0.55)} 0 0Z`]);
+  }
+  for (const [a, d] of pet) put(`<g transform="translate(${f2(x + rr(-3, 3))} ${f2(y + rr(-3, 3))}) rotate(${f2(a)})"><path d="${d}" fill="${pick([P.coral, P.coral, P.coralW])}" fill-opacity="0.72" filter="url(#wcPetal)"/></g>`);
+  wash(blob(x, y, r * 0.5, r * 0.45, 8, 0.2), P.raspDk, 0.3, 'wcSky', 0);
+  for (const [a, d] of pet) put(`<g transform="translate(${f2(x)} ${f2(y)}) rotate(${f2(a)})"><path d="${d}" fill="none" stroke="${INK}" stroke-width="1" stroke-opacity="0.8" stroke-dasharray="${f2(rr(40, 80))} ${f2(rr(3, 6))}" filter="url(#ink)"/><path d="M${f2(r * 0.15)} 0 Q${f2(r * 0.5)} ${f2(-r * 0.2)} ${f2(r * 0.8)} ${f2(-r * 0.35)} M${f2(r * 0.15)} 0 Q${f2(r * 0.5)} ${f2(r * 0.15)} ${f2(r * 0.8)} ${f2(r * 0.3)}" fill="none" stroke="${INK}" stroke-width="0.5" stroke-opacity="0.4" filter="url(#ink)"/></g>`);
+  const pod = blob(x, y, r * 0.14, r * 0.14, 7, 0.1);
+  wash(pod, P.sageLt, 0.9, 'wcSmall', 0.5); ink(pod, 0.8, 0.8);
+  for (let i = 0; i < 14; i++) { const a = rnd() * Math.PI * 2, d = r * rr(0.16, 0.26); put(`<circle cx="${f2(x + Math.cos(a) * d)}" cy="${f2(y + Math.sin(a) * d)}" r="1.1" fill="${INK}" fill-opacity="0.75"/>`); }
+}
+function inkDaisy(x, y, r, tilt = 0) {
+  const n = 13 + Math.floor(rnd() * 4);
+  for (let i = 0; i < n; i++) {
+    const a = (360 / n) * i + tilt + rr(-5, 5), L = r * rr(0.85, 1.05), w = L * 0.24;
+    const d = `M${f2(r * 0.2)} 0 C${f2(L * 0.35)} ${f2(-w * 0.6)} ${f2(L * 0.92)} ${f2(-w * 0.55)} ${f2(L)} 0 C${f2(L * 0.92)} ${f2(w * 0.55)} ${f2(L * 0.35)} ${f2(w * 0.6)} ${f2(r * 0.2)} 0Z`;
+    put(`<g transform="translate(${f2(x)} ${f2(y)}) rotate(${f2(a)})"><path d="${d}" fill="${P.trim}" fill-opacity="0.95" filter="url(#wcWhite)"/><path d="${d}" fill="none" stroke="${INK}" stroke-width="0.8" stroke-opacity="0.75" stroke-dasharray="${f2(rr(20, 40))} ${f2(rr(2, 4))}" filter="url(#ink)"/></g>`);
+  }
+  wash(blob(x + 1, y + 1, r * 0.28, r * 0.26, 8, 0.12), P.butter, 0.95, 'wcSmall', 0.5);
+  ink(blob(x, y, r * 0.27, r * 0.26, 8, 0.1), 0.8, 0.8);
+  for (let i = 0; i < 8; i++) put(`<circle cx="${f2(x + rr(-r, r) * 0.18)}" cy="${f2(y + rr(-r, r) * 0.18)}" r="0.8" fill="${INK}" fill-opacity="0.5"/>`);
+}
+function inkButtercup(x, y, r, tilt = 0) { smallFlower(x, y, r, pick([P.butter, P.butter, P.butterLt])); void tilt; }
+function inkBud(x, y, ang, r) {
+  const g = (d, fill, op, f) => put(`<g transform="translate(${f2(x)} ${f2(y)}) rotate(${f2(ang)})"><path d="${d}" fill="${fill}" fill-opacity="${op}" filter="url(#${f})"/></g>`);
+  const bud = `M0 0 C${f2(r * 0.4)} ${f2(-r * 0.9)} ${f2(r * 1.6)} ${f2(-r * 0.9)} ${f2(r * 2)} 0 C${f2(r * 1.6)} ${f2(r * 0.9)} ${f2(r * 0.4)} ${f2(r * 0.9)} 0 0Z`;
+  g(bud, P.pink, 0.75, 'wcSmall');
+  for (const sd of [-1, 1]) g(`M0 0 C${f2(r * 0.5)} ${f2(sd * r * 0.7)} ${f2(r * 1.2)} ${f2(sd * r * 0.6)} ${f2(r * 1.5)} ${f2(sd * r * 0.2)} C${f2(r * 1.1)} ${f2(sd * r * 0.25)} ${f2(r * 0.5)} ${f2(sd * r * 0.1)} 0 0Z`, P.sage, 0.85, 'wcSmall');
+  put(`<g transform="translate(${f2(x)} ${f2(y)}) rotate(${f2(ang)})"><path d="${bud}" fill="none" stroke="${INK}" stroke-width="0.8" stroke-opacity="0.8" filter="url(#ink)"/><path d="M0 0 L${f2(r * 1.5)} ${f2(-r * 0.2)} M0 0 L${f2(r * 1.5)} ${f2(r * 0.2)}" stroke="${INK}" stroke-width="0.6" stroke-opacity="0.6" filter="url(#ink)"/></g>`);
+}
+function sprigLeaves(p, ts, L, W) {
+  ts.forEach((t, i) => {
+    const [x, y] = bez(p, t), a = bezTan(p, t), sd = i % 2 ? 1 : -1, k = 1 - t * 0.45;
+    leaf(x, y, a + sd * rr(30, 45), L * k, W * k, pick([P.sage, P.olive, P.sageLt]), true, true);
+  });
+}
+function heroSprig() {
+  out.length = 0; seed(1201);
+  const W = 1200, base = [600, 262];
+  // stems for the left half; right half is the same spine, re-rolled
+  for (const s of [1, -1]) {
+    seed(s === 1 ? 7 : 9);
+    const X = (x) => (s === 1 ? x : W - x), A = (a) => (s === 1 ? a : 180 - a), Pm = (pts) => pts.map(([x, y]) => [X(x), y]);
+    const st = {
+      A: Pm([base, [460, 272], [240, 236], [40, 212]]),
+      B: Pm([[598, 250], [540, 180], [440, 118], [340, 104]]),
+      C: Pm([[596, 254], [510, 185], [330, 126], [150, 134]]),
+      D: Pm([[598, 262], [520, 306], [380, 338], [222, 322]]),
+      F: Pm([[600, 256], [562, 232], [522, 216], [484, 206]]),
+      G: Pm([[600, 258], [575, 288], [546, 300], [518, 298]]),
+      I: Pm([[600, 258], [540, 258], [450, 248], [396, 238]]),
+      J: Pm([[600, 250], [588, 160], [532, 70], [476, 70]]),
+      K: Pm([[600, 258], [520, 236], [430, 186], [386, 156]]),
+    };
+    stemLine(st.A, 3.2, 0.6, P.sage); stemLine(st.C, 2.6, 0.7, P.olive); stemLine(st.B, 2.4, 1, P.sage);
+    stemLine(st.D, 2.4, 0.8, P.sage); stemLine(st.F, 2.6, 1.4, P.olive); stemLine(st.G, 2.2, 1.2, P.sage);
+    stemLine(st.I, 2.2, 1, P.olive); stemLine(st.J, 2.2, 1.1, P.sage); stemLine(st.K, 2.2, 1.1, P.olive);
+    sprigLeaves(st.A, [0.1, 0.22, 0.34, 0.47, 0.6, 0.72, 0.84, 0.94], 58, 17);
+    sprigLeaves(st.C, [0.3, 0.46, 0.62, 0.78, 0.9], 46, 13);
+    sprigLeaves(st.D, [0.24, 0.4, 0.56, 0.72, 0.88], 46, 14);
+    sprigLeaves(st.B, [0.4, 0.6, 0.8], 38, 12);
+    fern(X(588), 262, A(170), 90, P.sage); fern(X(592), 250, A(-150), 70, P.olive);
+    leaf(X(594), 262, A(160), 80, 22, P.sage); leaf(X(596), 254, A(-172), 66, 18, P.olive);
+    const tipA = bez(st.A, 1); leaf(tipA[0], tipA[1], A(185), 20, 6, P.sage);
+    inkBud(...bez(st.B, 1), A(-168), 9); inkBud(...bez(st.C, 1), A(-175), 8);
+    inkBud(...bez(st.J, 1), A(150), 9);
+    inkButtercup(...bez(st.A, 0.8), 11); inkButtercup(...bez(st.I, 1), 13); inkButtercup(X(250), 190, 10);
+    inkDaisy(...bez(st.A, 0.52), 22, rr(0, 30)); inkDaisy(...bez(st.D, 1), 24, rr(0, 30)); inkDaisy(...bez(st.G, 1), 30);
+    inkCosmos(...bez(st.K, 1), 36, rr(0, 45)); inkCosmos(...bez(st.F, 1), 50, rr(0, 45));
+    smallFlower(X(312), 150, 8, P.pinkLt); smallFlower(X(330), 162, 7, P.pinkLt); smallFlower(X(300), 166, 7, P.pink);
+    butterfly(X(430), 300, 0.22, s * 20);
+  }
+  seed(1202);
+  inkButtercup(600, 306, 14);
+  inkPoppy(600, 200, 62, rr(0, 90));
+  return svgDoc(W, 400, out.join(''));
+}
+function sectionSprig() {
+  out.length = 0; seed(601);
+  const main = [[40, 92], [190, 70], [390, 108], [560, 76]];
+  stemLine(main, 2.6, 1, P.sage);
+  sprigLeaves(main, [0.1, 0.24, 0.4, 0.62, 0.78, 0.9], 36, 11);
+  const t1 = arc(...bez(main, 0.3), -100, 40, -15), t2 = arc(...bez(main, 0.66), 75, 26, -15), t3 = arc(...bez(main, 0.82), -80, 28, 25);
+  stemLine(t1, 1.6, 0.9, P.sage); stemLine(t2, 1.5, 0.9, P.olive); stemLine(t3, 1.4, 0.8, P.sage);
+  inkBud(...bez(main, 1), -20, 7);
+  smallFlower(t2[3][0] - 6, t2[3][1] + 4, 7, P.pinkLt); smallFlower(t2[3][0] + 7, t2[3][1], 6, P.pink); smallFlower(t2[3][0], t2[3][1] - 8, 6, P.pinkLt);
+  inkButtercup(t3[3][0], t3[3][1], 11);
+  inkDaisy(...bez(main, 0.05), 18, 10);
+  inkCosmos(t1[3][0] + 4, t1[3][1] + 6, 26, 20);
+  inkPoppy(...bez(main, 0.52), 24, 30);
+  return svgDoc(600, 150, out.join(''));
+}
+function singleStemInk() {
+  out.length = 0; seed(401);
+  const main = [[86, 392], [70, 300], [100, 190], [84, 108]];
+  stemLine(main, 3.4, 2, P.sage);
+  const side = [bez(main, 0.42), [118, 230], [140, 150], [128, 122]];
+  stemLine(side, 2, 1.4, P.olive);
+  leaf(84, 384, -128, 70, 16, P.olive); leaf(86, 384, -58, 62, 14, P.sage); leaf(82, 372, -100, 52, 12, P.sage);
+  sprigLeaves(main, [0.32, 0.55], 40, 10);
+  poppyBud(128, 122, 11, 115);
+  inkPoppy(84, 84, 52, 8);
+  return svgDoc(160, 400, out.join(''));
+}
+
 // ===================== SPOTS =====================
 function butterflySpot() {
   out.length = 0; seed(12);
@@ -602,6 +729,9 @@ function budVase() {
 
 // ---------- render ----------
 const pieces = [
+  ['hero-sprig', heroSprig, 1200, 400, true],
+  ['section-ornament', sectionSprig, 600, 150, true],
+  ['single-stem', singleStemInk, 160, 400, true],
   ['building', building, 1200, 700, true],
   ['wallpaper-tile-ochre', () => wallpaper(P.ochre), 600, 600, false],
   ['wallpaper-tile-ivory', () => wallpaper(P.ivory), 600, 600, false],
